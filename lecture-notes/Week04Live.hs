@@ -44,9 +44,6 @@ foldrList c n (x:xs) = x `c` (foldrList c n xs)
 
 
 
-
-
-
 -- DEFINE sum'
 -- DEFINE append'
 -- DEFINE concat'
