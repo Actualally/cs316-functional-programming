@@ -2,7 +2,7 @@ module Week05Problems where
 
 import Data.Foldable
 import Data.Monoid
-import Data.Bits (FiniteBits(countLeadingZeros), Bits (xor))
+import Data.Bits (FiniteBits(countLeadingZeros))
 
 {------------------------------------------------------------------------------}
 {- TUTORIAL QUESTIONS                                                         -}
@@ -21,7 +21,7 @@ import Data.Bits (FiniteBits(countLeadingZeros), Bits (xor))
 data Host = MkHost String Int
 
 instance Show Host where
-  show (MkHost adr port) = "{\"name\":\"" ++ adr ++ "\", \"port\": " ++ show port ++ "}"
+  show = undefined
 
 
 
@@ -33,7 +33,7 @@ instance Show Host where
 newtype ClockHour = MkClockHour Int
 
 instance Eq ClockHour where
-  (MkClockHour x) == (MkClockHour y) = mod x 12 == mod y 12 
+  x == y = undefined
 
 {- You should have:
 
@@ -70,13 +70,10 @@ data RoughCount
    What is the 'mempty' that does nothing? -}
 
 instance Semigroup RoughCount where
-  Zero <> x = x
-  One <> One = One
-  Many <> _ = Many
-
+  x <> y = undefined
 
 instance Monoid RoughCount where
-  mempty = Zero
+  mempty = undefined
 
 
 
@@ -106,15 +103,13 @@ data Tree a
    function types. -}
 
 instance Semigroup a => Semigroup (Tree a) where
-  t <> Leaf = t
-  Leaf <> t = t
-  Node l1 x1 r1 <> Node l2 x2 r2 = Node (l1<>l2) (x1<>x2) (r1<>r2)
-  
+  x <> y = undefined
 
 {- What is the 'Tree' that combines to no effect by the above rules? -}
 
 instance Semigroup a => Monoid (Tree a) where
-  mempty = Leaf
+  mempty = undefined
+
 
 
 {- 5. Define Semigroup and Monoid instances for the following datatype. -}

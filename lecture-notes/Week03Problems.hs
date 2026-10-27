@@ -15,22 +15,13 @@ import Data.Char
 mulBy2 :: Int -> Int
 mulBy2 x = 2*x
 
-mulby2' :: Int -> Int
-mulby2' = \x -> x*2
-
 mul :: Int -> Int -> Int
 mul x y = x * y
-
-mul' :: Int -> Int -> Int
-mul' = \x y -> x*y
 
 invert :: Bool -> Bool
 invert True  = False
 invert False = True
   {- HINT: use a 'case', or an 'if'. -}
-
-invert' :: Bool -> Bool
-invert' = \x -> if x == True then False else True
 
 
 {- 2. Partial Application
@@ -49,7 +40,7 @@ invert' = \x -> if x == True then False else True
    function as short as possible? -}
 
 double_v2 :: Int -> Int
-double_v2 = \x -> mul x 2
+double_v2 = undefined -- fill this in
 
 {- 4. Using 'map'.
 
@@ -72,7 +63,7 @@ double_v2 = \x -> mul x 2
 -}
 
 shout :: String -> String    -- remember that String = [Char]
-shout = map toUpper
+shout = undefined
 
 
 {- 5. Using 'map' with another function.
@@ -96,16 +87,8 @@ shout = map toUpper
    into two element lists. -}
 
 dupAll :: [a] -> [a]
-dupAll [] = []
-dupAll (x:xs) = dupHelper x ++ dupAll xs
+dupAll = undefined
 
-dupAll2 :: [a] -> [a]
-dupAll2 = \x -> case x of
-         [] -> []
-         (x:xs) -> dupHelper x ++ dupAll2 xs
-
-dupHelper:: a -> [a]
-dupHelper a = [a,a]
 
 {- 6. Using 'filter'
 
@@ -118,19 +101,14 @@ dupHelper a = [a,a]
        's' and counts the number of 'c's in 's'. -}
 
 onlyEs :: String -> String
-onlyEs = \x -> case x of
-         [] -> []
-         (x:xs) -> filter (=='e') [x] ++ onlyEs xs
+onlyEs = undefined
 
 numberOfEs :: String -> Int
-numberOfEs = \x -> case x of
-             [] -> 0
-             (x:xs) -> length $ filter (=='e') [x] ++ onlyEs xs
+numberOfEs = undefined
 
 numberOf :: Char -> String -> Int
-numberOf = \c s -> case s of
-         [] -> 0
-         (x:xs) -> length (filter (== c) [x]) + numberOf c xs
+numberOf = undefined
+
 
 {- 7. Rewriting 'filter'
 
@@ -142,7 +120,7 @@ numberOf = \c s -> case s of
 -}
 
 filter_v2 :: (a -> Bool) -> [a] -> [a]
-filter_v2 p = concat. map (\x -> if p x then [x] else [])
+filter_v2 = undefined
 
 filterMap :: (a -> Maybe b) -> [a] -> [b]
 filterMap = undefined
@@ -158,12 +136,9 @@ filterMap = undefined
    this week. -}
 
 (>>>) :: (a -> b) -> (b -> c) -> a -> c
-(>>>) f g x = g(f(x))
+(>>>) = undefined
 
 {- Try rewriting the 'numberOfEs' function from above using this one. -}
-
-numberOfEs2 :: String -> Int
-numberOfEs2 = \x -> (>>>) (filter (=='e')) length x
 
 {- 9. Backwards application
 
@@ -172,7 +147,7 @@ numberOfEs2 = \x -> (>>>) (filter (=='e')) length x
    its arguments in reverse order to normal function application! -}
 
 (|>) :: a -> (a -> b) -> b
-(|>) x f = f(x)
+(|>) x f = undefined
 
 
 {- This function can be used between its arguments like so:
@@ -192,7 +167,7 @@ numberOfEs2 = \x -> (>>>) (filter (=='e')) length x
    arguments in reverse order: -}
 
 flip :: (a -> b -> c) -> b -> a -> c
-flip f b a = f a b
+flip  = undefined
 
 {- 11. Evaluating Formulas
 
@@ -217,10 +192,9 @@ data Formula
 -}
 
 eval_v1 :: Formula -> Bool
-eval_v1 (Atom _) = True
-eval_v1 (And p q) = eval_v1 p && eval_v1 q
-eval_v1 (Or p q) = eval_v1 p || eval_v1 q
-eval_v1 (Not p) = not(eval_v1 p)
+eval_v1 = undefined
+
+
 
 
 {- (b) Now write a new version of 'eval_v1' that, instead of evaluating
@@ -228,10 +202,7 @@ eval_v1 (Not p) = not(eval_v1 p)
        for each atomic proposition: -}
 
 eval :: (String -> Bool) -> Formula -> Bool
-eval v (Atom a) = v a
-eval v (And p q) = eval v p && eval v q
-eval v (Or p q) = eval v p || eval v q
-eval v (Not p) = not (eval v p)
+eval = undefined
 
 {- For example:
 
